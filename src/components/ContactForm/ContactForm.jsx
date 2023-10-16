@@ -44,7 +44,6 @@ export const ContactForm = () => {
       });
     } else {
       const newContact = {
-        id: nanoid(),
         name,
         phone,
       };
