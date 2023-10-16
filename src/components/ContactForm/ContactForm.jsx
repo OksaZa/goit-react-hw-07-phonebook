@@ -8,7 +8,7 @@ import { selectContactsArray } from 'redux/contactSlice';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
-  const [number, setNumber] = useState('');
+  const [phone, setPhone] = useState('');
   const dispatch = useDispatch();
   const contacts = useSelector(selectContactsArray);
 
@@ -22,8 +22,8 @@ export const ContactForm = () => {
         setName(value);
         break;
 
-      case 'number':
-        setNumber(value);
+      case 'phone':
+        setPhone(value);
         break;
 
       default:
@@ -42,7 +42,7 @@ export const ContactForm = () => {
       const newContact = {
         id: nanoid(),
         name,
-        number,
+        phone,
       };
       addContactToStore(newContact);
       reset();
@@ -51,7 +51,7 @@ export const ContactForm = () => {
 
   const reset = () => {
     setName('');
-    setNumber('');
+    setPhone('');
   };
 
   return (
@@ -71,10 +71,10 @@ export const ContactForm = () => {
         Number
         <input
           type="tel"
-          name="number"
+          name="phone"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           onChange={handleInputChange}
-          value={number}
+          value={phone}
           required
         />
       </label>
