@@ -2,10 +2,8 @@ import { ContactForm } from 'components/ContactForm/ContactForm';
 import { Filter } from 'components/Filter/Filter';
 import { ContactList } from 'components/ContactList/ContactList';
 import css from './App.module.css';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-// import { ThreeDots } from 'react-loader-spinner';
 import { fetchContacts } from 'redux/thunk';
 import {
   selectAllContacts,
@@ -13,6 +11,8 @@ import {
   selectIsLoading,
 } from 'redux/contactSlice';
 import Loader from 'components/Loader/Loader';
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const App = () => {
   const contacts = useSelector(selectAllContacts);
@@ -36,6 +36,7 @@ export const App = () => {
           <p className={css.message}>There are no contacts in the Phonebook</p>
         )}
       </div>
+      <ToastContainer position="top-right" autoClose={1500} />
     </div>
   );
 };

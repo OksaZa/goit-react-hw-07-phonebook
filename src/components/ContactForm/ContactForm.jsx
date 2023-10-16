@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { Form } from './ContactForm.styled';
-
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/thunk';
 import { nanoid } from 'nanoid';
 import { selectContactsArray } from 'redux/contactSlice';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 export const ContactForm = () => {
   const [name, setName] = useState('');
@@ -37,7 +38,10 @@ export const ContactForm = () => {
       user => user.name.toLocaleLowerCase() === name.toLowerCase()
     );
     if (existingContact) {
-      alert(`${name} is already in contacts`);
+      toast.error(`${name} is already in contacts`, {
+        position: 'top-right',
+        autoClose: 1500,
+      });
     } else {
       const newContact = {
         id: nanoid(),
