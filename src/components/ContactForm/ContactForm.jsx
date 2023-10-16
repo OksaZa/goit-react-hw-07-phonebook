@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { Form } from './ContactForm.styled';
 import { useSelector, useDispatch } from 'react-redux';
 import { addContact } from 'redux/thunk';
-import { nanoid } from 'nanoid';
 import { selectContactsArray } from 'redux/contactSlice';
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
